@@ -19,4 +19,11 @@ public class Main extends JavaPlugin {
     public static Main getInstance() {
         return instance;
     }
+
+    @Override
+    public void onDisable() {
+        if (storage != null) {
+            storage.saveSync();
+        }
+    }
 }
