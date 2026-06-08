@@ -1,17 +1,22 @@
 package io.github.derexxd.silentDeathMessages;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import io.github.derexxd.silentDeathMessages.listeners.PlayerDeathListener;
 
-public final class SilentDeathMessages extends JavaPlugin {
+public class Main extends JavaPlugin {
+
+    private static Main instance;
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        instance = this;
 
+        saveDefaultConfig();
+
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public static Main getInstance() {
+        return instance;
     }
 }
