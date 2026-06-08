@@ -1,0 +1,8 @@
+name: Silent Death Messages
+version: '1.0.0.0'
+main: io.github.derexxd.silentDeathMessages.SilentDeathMessages
+api-version: '1.18'
+prefix: DerexXD
+authors: [ DerexXD ]
+description: Lets you silence death messages for players, highly configurable.
+website: https://www.derekchen.dev/
