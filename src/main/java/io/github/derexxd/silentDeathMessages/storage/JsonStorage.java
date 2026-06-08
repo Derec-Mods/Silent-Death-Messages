@@ -66,7 +66,7 @@ public class JsonStorage {
         });
     }
 
-    public Set<String> getIgnoredPlayers() {
+    public Set<String> getIgnoredPlayers()  {
         return ignoredPlayers;
     }
 

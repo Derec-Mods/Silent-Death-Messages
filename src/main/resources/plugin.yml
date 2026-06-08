@@ -6,3 +6,17 @@ prefix: DerexXD
 authors: [ DerexXD ]
 description: Lets you silence death messages for players, highly configurable.
 website: https://www.derekchen.dev/
+
+commands:
+  sdm:
+    description: Add players to the silent death messages list.
+    permission: silentdeathmessages.admin
+
+# Registering your permissions
+permissions:
+  silentdeathmessages.silent:
+    description: Players with this permission will not have their deaths broadcasted in chat.
+    default: false
+  silentdeathmessages.admin:
+    description: Allows the use of the /sdm and /toexperiment commands.
+    default: op

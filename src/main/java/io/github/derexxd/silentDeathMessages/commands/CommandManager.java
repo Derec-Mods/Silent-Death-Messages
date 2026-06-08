@@ -1,6 +1,6 @@
 package io.github.derexxd.silentDeathMessages.commands;
 
-import io.github.derexxd.silentDeathMessages.Main;
+import io.github.derexxd.silentDeathMessages.SilentDeathMessages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -16,6 +16,11 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.hasPermission("silentdeathmessages.admin")) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+            return true;
+        }
+
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Usage: /sdm add <player>");
             return true;
@@ -36,12 +41,12 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
                 String uuid = target.getUniqueId().toString();
 
-                if (Main.getInstance().getStorage().getIgnoredPlayers().contains(uuid)) {
+                if (SilentDeathMessages.getInstance().getStorage().getIgnoredPlayers().contains(uuid)) {
                     sender.sendMessage(ChatColor.YELLOW + target.getName() + " is already on the ignore list.");
                     return true;
                 }
 
-                Main.getInstance().getStorage().addPlayer(uuid);
+                SilentDeathMessages.getInstance().getStorage().addPlayer(uuid);
 
                 sender.sendMessage(ChatColor.GREEN + "Added " + target.getName() + " to the silent death messages list.");
                 break;

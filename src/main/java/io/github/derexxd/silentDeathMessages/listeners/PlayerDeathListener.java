@@ -1,12 +1,12 @@
 package io.github.derexxd.silentDeathMessages.listeners;
 
-import io.github.derexxd.silentDeathMessages.Main; // Import your main class
+import io.github.derexxd.silentDeathMessages.SilentDeathMessages;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import java.util.List;
+import java.util.Set;
 
 public class PlayerDeathListener implements Listener {
 
@@ -15,10 +15,10 @@ public class PlayerDeathListener implements Listener {
         Player player = event.getEntity();
         String uuid = player.getUniqueId().toString();
 
-        List<String> ignoredPlayers = Main.getInstance().getConfig().getStringList("ignored-players");
+        Set<String> ignoredPlayers = SilentDeathMessages.getInstance().getStorage().getIgnoredPlayers();
 
         if (player.hasPermission("silentdeathmessages.silent") || ignoredPlayers.contains(uuid)) {
-            event.deathMessage(null);
+            event.setDeathMessage(null);
         }
     }
 }
