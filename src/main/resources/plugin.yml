@@ -1,5 +1,5 @@
 name: Silent Death Messages
-version: '1.0.0.0'
+version: '${version}'
 main: io.github.derexxd.silentDeathMessages.SilentDeathMessages
 api-version: '1.18'
 prefix: DerexXD
